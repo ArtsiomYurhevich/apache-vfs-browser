@@ -483,7 +483,7 @@ public class VfsFileChooserDialog implements SelectionListener, VfsBrowserListen
         vfsBrowser.selectTreeItemByFileObject( initialFile != null ? initialFile : rootFile, true );
         updateParentFileCombo( initialFile != null ? initialFile : rootFile );
         setSelectedFile( initialFile != null ? initialFile : rootFile );
-        openFileCombo.setText( initialFile != null ? initialFile.getName().getURI() : rootFile.getName().getURI() );
+        openFileCombo.setText( initialFile != null ? initialFile.getName().getFriendlyURI() : rootFile.getName().getFriendlyURI() );
       }
     } catch ( FileSystemException e ) {
       MessageBox box = new MessageBox( dialog.getShell() );
@@ -837,7 +837,7 @@ public class VfsFileChooserDialog implements SelectionListener, VfsBrowserListen
           vfsBrowser.setSelectedFileObject( newRoot );
           // make sure access/secret keys not displayed in plain text
           //          String str = folderURL.setFolderURL(newRoot.getName().getURI());
-          openFileCombo.setText( newRoot.getName().getURI() );
+          openFileCombo.setText( newRoot.getName().getFriendlyURI() );
         }
       } catch ( Exception e ) {
         // top of root
@@ -982,7 +982,7 @@ public class VfsFileChooserDialog implements SelectionListener, VfsBrowserListen
       String[] items = new String[ parentChain.size() ];
       int idx = 0;
       for ( int i = parentChain.size() - 1; i >= 0; i-- ) {
-        items[ idx++ ] = ( parentChain.get( i ) ).getName().getURI();
+        items[ idx++ ] = ( parentChain.get( i ) ).getName().getFriendlyURI();
       }
 
       openFileCombo.setItems( items );
